@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: test
+
+#多文档模式，使用 --- 分隔开
+---
+
+server:
+  port: 8082
+# 给第二套环境命名
+spring:
+  profiles: test

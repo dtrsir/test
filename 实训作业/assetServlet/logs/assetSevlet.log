@@ -1,0 +1,62 @@
+[DEBUG][20220514 09:55:43,549][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 09:55:43,560][BaseDao:40] 获取数据库连接。。。
+[WARN ][20220514 09:55:43,681][MySqlValidConnectionChecker:55] Cannot resolve com.mysq.jdbc.Connection.ping method.  Will use 'SELECT 1' instead.
+java.lang.NullPointerException
+	at com.alibaba.druid.pool.vendor.MySqlValidConnectionChecker.<init>(MySqlValidConnectionChecker.java:50)
+	at com.alibaba.druid.pool.DruidDataSource.initValidConnectionChecker(DruidDataSource.java:944)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:659)
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:986)
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:982)
+	at com.ossjk.asset.base.dao.BaseDao.getConnection(BaseDao.java:42)
+	at com.ossjk.asset.base.dao.BaseDao.autoGenEntityTitle(BaseDao.java:458)
+	at com.ossjk.asset.system.dao.DevicetypeDao.<init>(DevicetypeDao.java:12)
+	at com.ossjk.asset.system.dao.DevicetypeDao.main(DevicetypeDao.java:21)
+[INFO ][20220514 09:55:43,956][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 09:55:43,977][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 09:55:43,979][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 09:59:12,419][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 09:59:12,423][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 09:59:12,731][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 09:59:12,751][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 09:59:12,754][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 10:04:03,014][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 10:04:03,018][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 10:04:03,327][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 10:04:03,344][BaseDao:76] 执行：select * from Devicetype
+[DEBUG][20220514 10:04:03,348][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 10:04:03,350][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 10:06:45,339][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 10:06:45,343][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 10:06:45,655][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 10:06:45,671][BaseDao:76] 执行：select * from Devicetype
+[DEBUG][20220514 10:06:45,677][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 10:06:45,678][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 15:54:00,490][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 15:54:00,494][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 15:54:00,817][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 15:54:00,841][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 15:54:00,843][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 20:02:36,525][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:02:36,529][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 20:02:36,813][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 20:02:36,828][BaseDao:76] 执行：select * from Devicetype
+[DEBUG][20220514 20:02:36,837][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 20:02:36,838][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 20:03:23,169][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:03:52,522][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:03:52,525][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 20:03:52,813][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 20:04:15,482][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:04:15,485][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 20:04:15,769][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 20:05:53,290][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:05:53,293][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 20:05:53,574][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 20:05:53,595][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 20:05:53,596][PreparedStatementPool:123] stmt enter cache
+[DEBUG][20220514 20:10:01,897][DruidPool:43] 初始化连接池。。。
+[DEBUG][20220514 20:10:01,900][BaseDao:40] 获取数据库连接。。。
+[INFO ][20220514 20:10:02,180][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20220514 20:10:02,195][BaseDao:76] 执行：select * from Devicerepair
+[DEBUG][20220514 20:10:02,204][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20220514 20:10:02,205][PreparedStatementPool:123] stmt enter cache

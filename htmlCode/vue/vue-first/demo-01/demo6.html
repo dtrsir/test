@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js'></script>
+</head>
+<body>
+<!--这里被vm模型绑定了，是一个vue对象-->
+<div id="app">
+    <!--自定义组件必须放在vue对象中-->
+    <!--使用组件名标签-->
+    <name v-for="item in items" v-bind:arg="item"></name>
+    <!--将遍历出来的item这个东西单向绑定到arg这个组件的props中，
+    这就类似与将遍历出来的东西绑定到我们html标签中的某个属性中，但是这个属性在我们的组件中是一种参数-->
+
+
+</div>
+
+<script>
+    /*定义一个vue组件component*/
+    /*第一个参数是组件名，后面的是组件内容*/
+    /*组件内容里面一律使用单引号*/
+    Vue.component("name", {
+        /*定义组件参数，因为参数不一定只有一个，所以使用[]数组的形式包裹起来*/
+        props: ['arg'],
+        template: '<li>{{arg}}</li>>'
+    });
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items:["java", "linux"]
+        }
+    });
+</script>
+
+</body>
+</html>

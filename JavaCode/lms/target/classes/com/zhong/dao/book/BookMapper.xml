@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.book.BookMapper">
+
+    <!--通过图书id获取图书信息-->
+    <select id="getBookById" resultType="book">
+        select * from lms.book where id = #{id};
+    </select>
+
+    <!--通过条件查询图书(通过map传递参数)。 书名，作者，出版社，库存（分页currentPageNo和PageSize）-->
+    <select id="getBookList" parameterType="map" resultType="book">
+        select * from lms.book
+        <where>
+            <if test="bookName != null">
+                and book_name = #{bookName}
+            </if>
+            <if test="author != null">
+                and author = #{author}
+            </if>
+            <if test="publisher != null">
+                and publisher = #{publisher}
+            </if>
+            <if test="stock != null">
+                and stock >= #{stock}
+            </if>
+        </where>
+        <trim prefix="limit">
+            <if test="from != null and pageSize != null">
+                #{from},#{pageSize}
+            </if>
+        </trim>
+    </select>
+
+    <!--通过条件统计图书数量。作者，出版社，库存-->
+    <select id="getBookCount" parameterType="map" resultType="_int">
+        select count(1) from lms.book
+        <where>
+            <if test="author != null">
+                and author = #{author}
+            </if>
+            <if test="publisher != null">
+                and publisher = #{publisher}
+            </if>
+            <if test="stock != null">
+                and stock >= #{stock}
+            </if>
+        </where>
+    </select>
+
+    <!--查询某一个时间段内出版的图书-->
+    <select id="getBookByPublicTime" resultType="book">
+        select * from lms.book
+        <where>
+            <if test="starTime != null and endTime != null">
+                public_time between #{starTime} and #{endTime}
+            </if>
+        </where>
+        <trim prefix="limit" >
+            <if test="currentPageNo != null and pageSize!= null">
+                #{currentPageNo},#{pageSize}
+            </if>
+        </trim>
+    </select>
+
+    <!--添加图书-->
+    <insert id="addBook" parameterType="book">
+        insert into lms.book(id,book_name,author,publisher,public_time,price,stock,create_by,creation_date)
+        values (#{id}, #{bookName}, #{author}, #{publisher}, #{publicTime}, #{price}, #{stock}, #{createBy}, #{creationDate});
+    </insert>
+
+    <!--通过id删除图书-->
+    <delete id="deleteBook">
+        delete from lms.book where id = #{id};
+    </delete>
+
+    <!--修改图书信息-->
+    <update id="modify" parameterType="book">
+        update lms.book
+        <set>
+            <if test="bookName != null">
+                book_name = #{bookName},
+            </if>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="publisher != null">
+                publisher = #{publisher},
+            </if>
+            <if test="publicTime != null">
+                public_time = #{publicTime},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="stock != null">
+                stock = #{stock},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate},
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+</mapper>
+

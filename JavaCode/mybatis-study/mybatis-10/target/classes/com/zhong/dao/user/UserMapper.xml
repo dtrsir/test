@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.user.UserMapper">
+
+    <!--通过userCode获取User-->
+    <select id="getLoginUser" resultType="user">
+        select * from smbms.smbms_user where userCode = #{userCode};
+    </select>
+
+    <!--增加用户信息-->
+    <insert id="add" parameterType="user">
+        insert into smbms.smbms_user(id, userCode, userName, userPassword, gender, birthday, phone, address, userRole, createdBy, creationDate)
+        values ( #{id}, #{userCode}, #{userName}, #{userPassword}, #{gender}, #{birthday}, #{phone}, #{address}, #{userRole}, #{createdBy}, #{creationDate});
+    </insert>
+
+    <!--通过条件查询userList-->
+    <select id="getUserList" resultType="user">
+        select * from smbms.smbms_user
+        <where>
+            <if test="userName != null">
+                userName = #{userName}
+            </if>
+            <if test="userRole != null">
+                userRole = #{userRole}
+            </if>
+        </where>
+        <if test="from != null">
+            limit #{from},#{pageSize}
+        </if>
+    </select>
+
+    <!--通过条件查询-用户记录数-->
+    <select id="getUserCount" resultType="_int">
+        select count(1) from smbms.smbms_user
+        <where>
+            <if test="userName != null">
+                userName = #{userName}
+            </if>
+            <if test="userRole != null">
+                userRole = #{userRole}
+            </if>
+        </where>
+    </select>
+
+    <!--通过userId删除user-->
+    <delete id="deleteUserById">
+        delete from smbms.smbms_user where id = #{id};
+    </delete>
+
+    <!--通过useId获取user-->
+    <select id="getUserById" resultType="user">
+        select * from smbms.smbms_user where id = #{id};
+    </select>
+
+    <!--修改用户信息-->
+    <update id="modify" parameterType="user">
+        update smbms.smbms_user
+        <set>
+            <if test="userCode != null">
+                userCode = #{userCode},
+            </if>
+            <if test="userName != null">
+                userName = #{userName},
+            </if>
+            <if test="userPassword != null">
+                userPassword = #{userPassword},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="modifyBy != null">
+                modifyBy = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modifyDate = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--修改当前用户密码-->
+    <update id="updatePwd" parameterType="_int">
+        update smbms.smbms_user
+        <set>
+            userPassword = #{pwd},
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

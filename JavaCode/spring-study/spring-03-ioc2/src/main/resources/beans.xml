@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    &lt;!&ndash;有参构造方式_下标赋值&ndash;&gt;
+    <bean id="user" class="com.zhong.dao.User">
+        <constructor-arg index="0" value="123" />
+    </bean>-->
+
+    <!--通过类型匹配来使用有参构造-->
+    <!--参数多个类型相同会出问题。所以不建议使用-->
+    <!--类型相同的时候，相同类型的参数会按照标签顺序进行赋值-->
+    <bean id="user1" class="com.zhong.dao.User">
+        <constructor-arg type="java.lang.String" value="123"></constructor-arg>
+    </bean>
+
+    <!--直接通过参数名赋值-->
+    <bean id="user" class="com.zhong.dao.User">
+        <constructor-arg name="name" value="123"></constructor-arg>
+    </bean>
+
+    <bean id="userT" class="com.zhong.dao.UserT">
+    </bean>
+
+    <bean id="userTest" class="com.zhong.dao.UserT" name="t,userT2 u3;u4">
+        <property name="name" value="123"></property>
+    </bean>
+
+
+
+</beans>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js'></script>
+</head>
+<body>
+<div id="app">
+    <!--还可以判断是否等于某个值-->
+    <h1 v-if="ok">yes</h1><!--如果为true显示ok-->
+    <h1 v-else>no</h1><!--否则显示no-->
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",/*绑定到具体哪一个id或者class上*/
+        data: {
+            ok: true/*boolean值数据*/
+        }
+    });
+</script>
+
+</body>
+</html>

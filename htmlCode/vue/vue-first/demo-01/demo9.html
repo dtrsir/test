@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js'></script>
+</head>
+
+<body>
+<div id="app">
+    <!--使用vue组件，整个组件的模板属性包含了插槽，所有要在标签内部写上组件来插入插槽-->
+    <todo>
+        <!--slot插槽属性指定该组件插入到哪一个插槽中-->
+        <todo-title slot="slot-title" :title="title"></todo-title>
+        <!--v-on:remove="remove"这里把一个自定义事件也就是remove绑定到vm叫做remove的函数上只要组件调用事件remove，vm上的remove就会被调用-->
+        <todo-items slot="slot-items" v-for="(item,index) in items" :index="index" :item="item" v-on:c-remove="Aremove(index)"></todo-items>
+
+    </todo>
+</div>
+
+<script>
+    /*vue组件，这是一个拥有插槽的组件*/
+    Vue.component("todo", {
+        /*slot标签就是插槽，这个标签在没有被插入的时候就是一个占位的作用，当这个插槽被组件插入，html代码层面插槽标签被组件替代，插槽消失*/
+        /*插槽需要一个name属性来被组件插入*/
+        template: '<div>\
+            <slot name="slot-title"></slot>\
+            <ul>\
+            <slot name="slot-items"></slot>\
+            </ul>\
+            </div>'
+    })
+    /*vue组件*/
+    Vue.component("todo-title", {
+        props: ['title'],
+        template: '<div>{{title}}</div>'
+    })
+
+    /*vue组件*/
+    Vue.component("todo-items", {
+        props: ['item'],
+        /*点击事件绑定到我们写的组件函数中*/
+        template: '<li>{{item}}<button @click="remove">删除</button></li>',
+        methods: {
+            remove: function (){
+                /*短横线命名*/
+                /*函数体通过一个名字调用一个外部的函数*/
+                this.$emit('c-remove');
+                /*第二种方式，直接调用vm函数,不需要自定义事件，需要传递index参数即可*/
+                // vm.remove(index);
+            }
+        }
+    })
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            title: "书籍列表",
+            items: ["java", "linux"]
+        },
+        methods: {
+            Aremove: function (index) {
+                this.items.splice(index, 1);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+[DEBUG][20181109 11:04:58,189][DruidPool:43] 初始化连接池。。。
+[DEBUG][20181109 11:04:58,197][BaseDao:40] 获取数据库连接。。。
+[WARN ][20181109 11:04:58,331][MySqlValidConnectionChecker:55] Cannot resolve com.mysq.jdbc.Connection.ping method.  Will use 'SELECT 1' instead.
+java.lang.NullPointerException
+	at com.alibaba.druid.pool.vendor.MySqlValidConnectionChecker.<init>(MySqlValidConnectionChecker.java:50)
+	at com.alibaba.druid.pool.DruidDataSource.initValidConnectionChecker(DruidDataSource.java:944)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:659)
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:986)
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:982)
+	at com.ossjk.asset.base.dao.BaseDao.getConnection(BaseDao.java:42)
+	at com.ossjk.asset.base.dao.BaseDao.autoGenEntityTitle(BaseDao.java:458)
+	at com.ossjk.asset.system.dao.RoleDao.main(RoleDao.java:18)
+[INFO ][20181109 11:04:58,614][DruidDataSource:721] {dataSource-1} inited
+[DEBUG][20181109 11:04:58,640][BaseDao:54] 回收数据库连接。。。
+[DEBUG][20181109 11:04:58,643][PreparedStatementPool:123] stmt enter cache

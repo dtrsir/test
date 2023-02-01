@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        /*[]属性选择器解决闪烁问题*/
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<div id="vue">
+    <div v-cloak>{{info}}</div><!--拿到整个json字符串-->
+    <a v-bind:href="info.url">点击跳转</a>
+
+</div>
+
+<script>
+
+    var vm = new Vue({
+        el: "#vue",
+        /*这是拿到json数据的第一种方式
+        data: {
+            info: null
+        },*/
+        /*第二种方式，这种方式和第一种方式一样，优点是可以防止数据污染*/
+        data() {
+            return{
+                info: {
+                    /*这么写可以拿到json里具体的数据*/
+                    name: null,
+                    url: null,
+                    page: null,
+                    isNonProfit: null,
+                    address: {
+                        street: null,
+                        city: null,
+                        country: null,
+                    },
+                    links: [
+                        {
+                            name: null,
+                            url: null
+                        },
+                        {
+                            name: null,
+                            url: null
+                        },
+                        {
+                            name: null,
+                            url: null
+                        },
+                    ]
+                }
+            }
+        },
+        /*axios建议写在mounted里面*/
+        mounted(){//钩子函数
+            /*钩子函数是一种链式编程*/
+            /*axios发起get请求，然后es6语法创建一个响应函数，通过给model层的键值对赋值可以让视图层拿到数据*/
+            axios.get('data.json').then(response=>(this.info=response.data));
+        }
+    });
+</script>
+
+</body>
+</html>

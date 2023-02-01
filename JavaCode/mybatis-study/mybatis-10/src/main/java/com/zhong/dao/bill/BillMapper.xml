@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.bill.BillMapper">
+
+
+    <!--根据供应商ID查询订单数量-->
+    <select id="getBillCountByProviderId" parameterType="int" resultType="_int">
+        select count(1) from smbms.smbms_bill where providerId = #{providerId};
+    </select>
+
+    <!--增加订单,这里对象的封装名字和数据库的字段名一致不需要使用结果集映射-->
+    <insert id="add" parameterType="bill">
+        insert into smbms.smbms_bill(id, billCode, productName, productDesc, productUnit, productCount, totalPrice, isPayment, createdBy, creationDate, modifyBy, modifyDate, providerId)
+        values ( #{id}, #{billCode}, #{productName}, #{productDesc}, #{productUnit}, #{productCount}, #{totalPrice}, #{isPayment}, #{createdBy}, #{creationDate}, #{modifyBy}, #{modifyDate}, #{providerId});
+    </insert>
+
+    <!--通过查询条件获取供应商列表-getBillList-->
+    <select id="getBillList" resultType="bill">
+        select * from smbms.smbms_bill
+        <where>
+            <if test="productName != null">
+                and productName = #{productName}
+            </if>
+            <if test="providerId != null">
+                and providerId = #{providerId}
+            </if>
+            <if test="isPayment != null">
+                and isPayment = #{isPayment}
+            </if>
+            <if test="from != null">
+                and createBy = #{from}
+            </if>
+        </where>
+        <if test="pageSize != null">
+            limit 0,#{pageSize}
+        </if>
+    </select>
+
+    <!--通过条件查询，查询供货商数量-->
+    <select id="getBillCount" resultType="_int">
+        select count(1) from smbms.smbms_bill
+        <where>
+            <if test="productName != null">
+                and productName = #{productName}
+            </if>
+            <if test="providerId != null">
+                and providerId = #{providerId}
+            </if>
+            <if test="isPayment != null">
+                and isPayment = #{isPayment}
+            </if>
+        </where>
+    </select>
+
+    <!--通过delId删除Bill-->
+    <delete id="deleteBillById">
+        delete from smbms.smbms_bill where id = #{id};
+    </delete>
+
+    <!--通过billId获取Bill-->
+    <select id="getBillById" resultType="bill">
+        select * from smbms.smbms_bill
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--修改订单信息-->
+    <update id="modify" parameterType="bill">
+        update smbms.smbms_bill
+        <set>
+            <if test="billCode != null">
+                billCode = #{billCode},
+            </if>
+            <if test="productName != null">
+                productName = #{productName},
+            </if>
+            <if test="productDesc != null">
+                productDesc = #{productDesc},
+            </if>
+            <if test="productUnit != null">
+                productUnit = #{productUnit},
+            </if>
+            <if test="productCount != null">
+                productCount = #{productCount},
+            </if>
+            <if test="totalPrice != null">
+                totalPrice = #{totalPrice},
+            </if>
+            <if test="isPayment != null">
+                isPayment = #{isPayment},
+            </if>
+            <if test="providerId != null">
+                providerId = #{providerId},
+            </if>
+            <if test="createdBy != null">
+                createdBy = #{createdBy},
+            </if>
+            <if test="creationDate != null">
+                creationDate = #{creationDate},
+            </if>
+            <if test="modifyBy != null">
+                modifyBy = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modifyDate = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据供应商Id删除订单信息-->
+    <delete id="deleteBillByProviderId">
+        delete from smbms.smbms_bill where providerId = #{providerId};
+    </delete>
+
+</mapper>

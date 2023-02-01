@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.user.UserMapper">
+
+    <!--条件查询用户（查询所有用户）展示所有用户，
+        展示条件查询用户，角色，姓名，年龄:starDate， endDate，性别。
+        分页：from，pageSize-->
+    <select id="queryUser" parameterType="map" resultType="user">
+        select * from lms2.user
+        <where>
+            <if test="userRole != null">
+                and user_role = #{userRole}
+            </if>
+            <if test="userName != null">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="starDate != null and endDate != null">
+                and birthday between #{starDate} and #{endDate}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+        </where>
+        <if test="from != null and pageSize != null">
+            limit #{from},#{pageSize}
+        </if>
+    </select>
+
+    <!--获得登陆用户:通过账号-->
+    <select id="getLoginUser" resultType="user" parameterType="string">
+        select * from lms2.user
+        where user_code = #{userCode};
+    </select>
+
+    <!--通过id查询一个用户-->
+    <select id="getUser" parameterType="_int" resultType="user">
+        select * from lms2.user
+        where id = #{id};
+    </select>
+
+    <!--统计用户总数
+        条件统计用户数（角色，姓名，年龄:starDate， endDate，性别。-->
+    <select id="userCount" resultType="_int" parameterType="map">
+        select count(1) from lms2.user
+        <where>
+            <if test="userRole != null">
+                and user_role = #{userRole}
+            </if>
+            <if test="userName != null">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="starDate != null and endDate != null">
+                and birthday between #{starDate} and #{endDate}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+        </where>
+    </select>
+
+    <!--增加一个用户-->
+    <insert id="addUser" parameterType="user">
+        insert into lms2.user(id, user_code, user_name, password, gender, birthday, phone, user_role, create_by, creation_date)
+        values (#{id}, #{userCode}, #{userName}, #{password}, #{gender}, #{birthday}, #{phone}, #{userRole}, #{createBy}, #{creationDate});
+    </insert>
+
+    <!--通过id删除用户-->
+    <delete id="deleteUser" parameterType="_int">
+        delete from lms2.user where id = #{id};
+    </delete>
+
+    <!--修改用户-->
+    <update id="updateUser" parameterType="user">
+        update lms2.user
+        <set>
+            <if test="userCode != null">
+                user_code = #{userCode},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName},
+            </if>
+            <if test="password != null">
+                `password` = #{password},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="userRole != null">
+                user_role = #{userRole},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
+    <!--修改用户密码-->
+    <update id="updatePassword" parameterType="_int">
+        update lms2.user
+        set password = #{password}
+        where id = #{id};
+    </update>
+
+    <!--解决删除用户之后id不连续问题-->
+    <select id="getUserOfInserter" resultType="_int" parameterType="_int">
+        select count(1) from lms2.user where id = #{id};
+    </select>
+
+    <select id="setAutoIncrement" parameterType="_int">
+        alter table lms2.user AUTO_INCREMENT = #{n};
+    </select>
+
+</mapper>

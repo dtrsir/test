@@ -1,0 +1,17 @@
+1653232069143	Delete element
+1653317949080	Move 'error.jsp' to 'errorPage'
+1653318034293	Move 'login-fail.jsp' to 'errorPage'
+1653487929813	Move 17 resources to 'admin'
+1653487941311	Move 8 resources to 'user'
+1653489709504	Copy folder
+1653489712379	Copy folder
+1653492589832	Delete element
+1653540311530	Rename package 'com.sjsq.po'
+1653540342962	Rename package 'com.sjsq.pojo'
+1653540567647	Rename package 'com.sjsq.po'
+1653541353886	Rename package 'com.sjsq.utils'
+1653541393223	Rename package 'com.sjsq.service.impl'
+1653541407581	Rename package 'com.sjsq.service'
+1653541422425	Rename package 'com.sjsq.dao.impl'
+1653541438532	Rename package 'com.sjsq.dao'
+1653574569506	Delete element

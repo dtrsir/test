@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* 初始化 */
+/* 项目需要，不初始化 */
+
+
+/* logo开始 */
+.logo {
+    width: 360px;
+    height: 45px;
+    display: inline;
+}
+/* logo结束 */
+
+/* bgcolor开始 */
+.bgcolor {
+    background-color: rgb(130, 236, 240);
+    height: 100%;
+}
+/* bgcolor结束 */

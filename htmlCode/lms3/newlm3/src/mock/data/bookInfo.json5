@@ -1,0 +1,80 @@
+[
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  },
+  {
+    bookname: "这是一本图书名",
+    author: "@cname",
+    public: "中国教育出版社",
+    stock: "10"
+  }
+]

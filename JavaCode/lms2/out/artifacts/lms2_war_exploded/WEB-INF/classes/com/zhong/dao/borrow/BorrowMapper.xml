@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.borrow.BorrowMapper">
+
+    <!--增加一条借阅记录-->
+    <insert id="addBorrow" parameterType="borrow">
+        insert into lms2.borrow(id, book_id, user_id, borrow_date, revert_date, create_by, creation_date)
+        values (#{id}, #{bookId}, #{userId}, #{borrowDate}, #{revertDate}, #{createBy}, #{creationDate});
+    </insert>
+
+    <!--删除一条借阅记录-->
+    <delete id="deleteBorrow" parameterType="_int">
+        delete from lms2.borrow where id = #{id};
+    </delete>
+
+    <!--修改一条借阅记录-->
+    <update id="updateBorrow" parameterType="borrow">
+        update lms2.borrow
+        <set>
+            <if test="bookId != null">
+                book_id = #{bookId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="borrowDate != null">
+                borrow_date = #{borrowDate},
+            </if>
+            <if test="revertDate != null">
+                revert_date = #{revertDate},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
+    <!--查询该用户下的所有的借阅记录-->
+    <select id="borrowList" parameterType="int" resultType="borrow">
+        select *
+        from lms2.borrow
+        <where>
+            <if test="userId != null">
+                and userId = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <!--条件查询借阅记录-->
+    <select id="queryBorrow" resultType="borrow" parameterType="map">
+        select *
+        from lms2.borrow
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="bookId != null">
+                and book_id = #{bookId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="starBorrowDate != null and endBorrowDate != null">
+                and borrow_date between #{starBorrowDate} and #{endBorrowDate}
+            </if>
+        </where>
+        limit #{from},#{pageSize};
+    </select>
+
+    <!--条件统计借阅记录-->
+    <select id="countBorrow" resultType="_int" parameterType="map">
+        select count(1)
+        from lms2.borrow
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="bookId != null">
+                and book_id = #{bookId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="starBorrowDate != null and endBorrowDate">
+                and borrow_date between #{starBorrowDate} and #{starBorrowDate}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

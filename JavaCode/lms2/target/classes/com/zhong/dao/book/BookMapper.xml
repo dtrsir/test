@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.book.BookMapper">
+
+    <!--条件查询用户（查询所有用户）展示所有用户，
+    展示条件查询用户，角色，姓名，年龄:starDate， endDate，性别。
+    分页：from，pageSize-->
+    <select id="queryBook" parameterType="map" resultType="book">
+        select * from lms2.book,lms2.category,lms2.publisher
+        <where>
+            category_id = category.id and publisher_id = publisher.id
+            <if test="bookName != null">
+                and book_name like concat('%',#{bookName},'%')
+            </if>
+        </where>
+        <if test="from != null and pageSize != null">
+            limit #{from},#{pageSize}
+        </if>
+    </select>
+
+    <!--通过id获取书籍-->
+    <select id="getBookById" parameterType="_int" resultType="book">
+        select *
+        from lms2.book
+        where id = #{id};
+    </select>
+
+    <!--显示所有的图书-->
+    <select id="bookList" resultType="book">
+        select * from lms2.book;
+    </select>
+
+    <!--增加一本图书-->
+    <insert id="addBook" parameterType="book">
+        insert into lms2.book(id, category_id, book_name, author, publisher_id, public_time, price, stock, create_by, creation_date)
+        values (#{id}, #{categoryId}, #{bookName}, #{author}, #{publisherId}, #{publicTime}, #{price}, #{stock}, #{createBy}, #{creationDate});
+    </insert>
+
+    <!--删除一本图书-->
+    <delete id="deleteBook" parameterType="_int">
+        delete from lms2.book
+        where id = #{id};
+    </delete>
+    
+    <!--借阅一本图书-->
+    <update id="borrowBook" parameterType="_int">
+        update lms2.book
+        set stock = stock - 1
+        where id = #{id};
+    </update>
+
+    <!--归还一本图书-->
+    <update id="revertBook" parameterType="_int">
+        update lms2.book
+        set stock = stock + 1
+        where id = #{id};
+    </update>
+
+    <!--修改一本图书-->
+    <update id="updateBook" parameterType="book">
+        update lms2.book
+        <set>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="bookName != null">
+                book_name = #{bookName},
+            </if>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="publisherId != null">
+                publisher_id = #{publisherId},
+            </if>
+            <if test="publicTime != null">
+                public_time = #{publicTime},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="stock != null">
+                stock = #{stock},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>
