@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--方便使用注解开发，配置扫描service包，让注解生效-->
+    <context:component-scan base-package="com.zhong.service"/>
+
+    <!--spring接管service包下的类-->
+    <bean class="com.zhong.service.user.UserServiceImpl" id="userService">
+        <!--注入容器中的dao层对象-->
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+    <bean class="com.zhong.service.role.RoleServiceImpl" id="roleService">
+        <property name="roleMapper" ref="roleMapper"/>
+    </bean>
+    <bean class="com.zhong.service.borrow.BorrowServiceImpl" id="borrowService">
+        <property name="borrowMapper" ref="borrowMapper"/>
+    </bean>
+    <bean class="com.zhong.service.book.BookServiceImpl" id="bookService">
+        <property name="bookMapper" ref="bookMapper"/>
+    </bean>
+
+    <!--spring接管mybatis事务，默认开启自动提交-->
+    <!--配置声明式事务-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--这里可以配置aop事务，可以用来配置控制台日志-->
+    <!--使用注解AOP-->
+    <!--接管注解切面-->
+    <!--<bean id="annotationPointCut" class="com.zhong.diy.AnnotationPointCut"></bean>-->
+    <context:component-scan base-package="com.zhong.aspect"/>
+    <!--开启自动代理-->
+    <aop:aspectj-autoproxy/>
+
+
+
+</beans>

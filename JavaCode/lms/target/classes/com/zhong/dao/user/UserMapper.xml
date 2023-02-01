@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.user.UserMapper">
+
+    <!--通过账户名(唯一)查询用户-->
+    <select id="getUserByUserCode" resultType="user">
+        select * from lms.user where user_code = #{userCode};
+    </select>
+
+    <!--通过id(唯一)获取用户-->
+    <select id="getUserById" resultType="user">
+        select * from lms.user where id = #{id};
+    </select>
+
+    <!--条件查询用户。用户名称，性别，年龄，电话号码，用户角色（分页from和pageSize）-->
+    <select id="getUserList" parameterType="map" resultType="user">
+        select * from lms.user,lms.role where user_role = role.id
+
+            <if test="userName != null">
+                and user_name = #{userName}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+            <if test="phone != null">
+                and phone = #{phone}
+            </if>
+            <if test="userRole != null">
+                and user_role = #{userRole}
+            </if>
+        <trim prefix="limit">
+            <if test="from != null and pageSize != null">
+                #{from},#{pageSize}
+            </if>
+        </trim>
+    </select>
+    <!--增加用户-->
+    <insert id="addUser" parameterType="user">
+        insert into lms.user(id,user_code,user_name,password,gender,birthday,phone,user_role,create_by,creation_date)
+        values (#{id},#{userCode},#{userName},#{password},#{gender},#{birthday},#{phone},#{userRole},#{createBy},#{creationDate});
+    </insert>
+
+    <!--通过条件统计用户数，性别，用户名称，年龄，用户角色-->
+    <select id="getUserCount" parameterType="map" resultType="_int">
+        select count(1) from lms.user
+        <where>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="userName != null">
+                and user_name = #{userName}
+            </if>
+            <if test="birthday != null">
+                and birthday = #{birthday}
+            </if>
+            <if test="userRole != null">
+                and user_role = #{userRole}
+            </if>
+        </where>
+    </select>
+
+    <!--通过id删除用户-->
+    <delete id="deleteById">
+        delete from lms.user where id = #{id};
+    </delete>
+
+    <!--修改某一个用户-->
+    <update id="modify" parameterType="user">
+        update lms.user
+        <set>
+        <if test="userCode != null">
+            user_code = #{userCode},
+        </if>
+        <if test="userName != null">
+            user_name = #{userName},
+        </if>
+        <if test="password != null">
+            `password` = #{password},
+        </if>
+        <if test="gender != null">
+            gender = #{gender},
+        </if>
+        <if test="birthday != null">
+            birthday = #{birthday},
+        </if>
+        <if test="phone != null">
+            phone = #{phone},
+        </if>
+        <if test="userRole != null">
+            user_role = #{userRole},
+        </if>
+        <if test="modifyBy != null">
+            modify_by = #{modifyBy},
+        </if>
+        <if test="modifyDate != null">
+            modify_date = #{modifyDate},
+        </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--修改当前用户的密码-->
+    <update id="updatePwd">
+        update lms.user set password = #{pwd} where id = #{id};
+    </update>
+
+
+</mapper>

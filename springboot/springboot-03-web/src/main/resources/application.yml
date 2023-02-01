@@ -1,0 +1,12 @@
+#server:
+#  servlet:
+#    context-path: /zhong
+
+
+# 配置文件的真实位置
+spring:
+  messages:
+    basename: i18n.login
+
+  mvc:
+    date-format: yyyy-MM-dd

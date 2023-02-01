@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/caseOne.css">
+<title>案例一</title>
+</head>
+<body>
+	<p>
+    	<img class="logo" src="./images/logo.gif" alt="logo">
+    图片img标签嵌套在段落p标签中
+    </p>
+    <ul>
+        <li>
+            <a href="main.html">首页</a>
+        </li>
+        <li>
+            <a href="olLearning.html">在线学习</a>
+        </li>
+        <li>
+            <a href="#">空链接</a>
+        </li>
+    </ul>
+    <hr>
+    <center>
+        <iframe src="main.html" name="main" width="98%" height="450px" scrolling="auto" frameborder="0"></iframe>
+    </center>
+</body>
+</html>

@@ -1,0 +1,120 @@
+[
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "admin",
+    password: "123456",
+    role: "admin",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "testBookManage",
+    password: "123456",
+    role: "bookManage",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "lisi",
+    password: "123456",
+    role: "bookManage",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "12121",
+    password: "123456",
+    role: "bookManage",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "testReader",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  },
+  {
+    id: "@id()",
+    username: "@cname",
+    userCode: "adm123in",
+    password: "123456",
+    role: "reader",
+    date: "@date()",
+    description: "@paragraph()", // 描述
+  }
+]
+

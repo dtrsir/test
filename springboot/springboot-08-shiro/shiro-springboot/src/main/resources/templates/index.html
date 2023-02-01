@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<h1>首页</h1>
+<p th:text="${msg}"></p>
+
+
+<!--shiro:guest=""验证是是否为未登录用户，是就显示子元素-->
+<a th:href="@{/toLogin}" shiro:guest="">登陆</a>
+
+<!--hasAnyPermissions拥有指定的任何一个权限即可显示子元素-->
+<div shiro:hasAnyPermissions="'user:add','user:update'"></div>
+
+<!--指定拥有特定权限的用户才会显示子元素-->
+<div shiro:hasPermission="'user:add'">
+    <a th:href="@{/user/add}">add</a> <br>
+</div>
+<div shiro:hasPermission="'user:uodate'">
+    <a th:href="@{/user/update}">update</a>
+</div>
+
+
+<a th:href="@{/logout}">注销</a>
+</body>
+</html>

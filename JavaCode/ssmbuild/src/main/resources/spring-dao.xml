@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--关联数据库文件-->
+    <!--此标签专门用来导入数据库文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--数据库连接池
+    spring原生数据源：DriverManagerDataSource
+    dbcp:半自动化操作，不能自动连接
+    c3p0:全自动化操作（自动加载配置文件，并且自动设置到对象中）
+    druid:
+    hikari:
+    -->
+     <bean id="dateSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+         <property name="driverClass" value="${jdbc.driver}"/>
+         <property name="jdbcUrl" value="${jdbc.url}"/>
+         <property name="user" value="${jdbc.user}"/>
+         <property name="password" value="${jdbc.password}"/>
+         <!--这里的db.properties必须按照官方规范写上jdbc.XX=XX，否则报错-->
+
+         <!--c3p0的私有属性-->
+         <!--设置最大连接池数量，并且指定在数据源启动的时候初始化多少个连接数-->
+         <property name="maxPoolSize" value="30"/>
+         <property name="minPoolSize" value="10"/>
+         <property name="initialPoolSize" value="10"/>
+         <!--关闭连接后不会自动commit-->
+         <property name="autoCommitOnClose" value="false"/>
+         <!--设置连接超时时间-->
+         <property name="checkoutTimeout" value="10000"/>
+         <!--设置连接失败重试次数-->
+         <property name="acquireRetryAttempts" value="2"/>
+     </bean>
+
+    <!--sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--配置数据源-->
+        <property name="dataSource" ref="dateSource"/>
+        <!--绑定mybatis核心配置-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!--配置dao接口扫描包，动态实现dao接口注入到spring容器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--要扫描的dao包-->
+        <property name="basePackage" value="com.zhong.dao"/>
+    </bean>
+
+</beans>

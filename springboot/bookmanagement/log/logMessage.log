@@ -1,0 +1,114 @@
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10001,procId-14} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000, rs-50000} query executed. 197.5716 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10002,procId-15} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001, rs-50001} query executed. 0.8517 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10003,procId-16} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002, rs-50002} query executed. 0.7831 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10004,procId-17} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003, rs-50003} query executed. 0.6466 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005,procId-18} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004, rs-50004} query executed. 0.6183 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} pool-connect
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} created. select * from user;
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} Parameters : []
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} Types : []
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} executed. 3.2464 millis. select * from user;
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Header: [id, name, pwd, perms]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [1, 张三, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [2, 李四, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [3, 王五, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [4, zz, 123456, user:add]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [5, root, 123456, user:update]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} clearParameters. 
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20005} clearBatch. 
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} pool-recycle
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10001} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10002} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10003} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10004} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10001,procId-19} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000, rs-50000} query executed. 166.8099 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10001, stmt-20000, rs-50000} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10001, stmt-20000} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10002,procId-20} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001, rs-50001} query executed. 0.5439 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10002, stmt-20001, rs-50001} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10002, stmt-20001} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10003,procId-21} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002, rs-50002} query executed. 0.505 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10003, stmt-20002, rs-50002} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10003, stmt-20002} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10004,procId-22} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003, rs-50003} query executed. 0.5959 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10004, stmt-20003, rs-50003} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10004, stmt-20003} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005,procId-23} connected
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004} created
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004, rs-50004} query executed. 0.6181 millis. select 1 from dual
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} Header: [1]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, stmt-20004, rs-50004} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20004} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} pool-connect
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} created. select * from user;
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} Parameters : []
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} Types : []
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} executed. 8.7613 millis. select * from user;
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} open
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Header: [id, name, pwd, perms]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [1, 张三, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [2, 李四, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [3, 王五, 123456, null]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [4, zz, 123456, user:add]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} Result: [5, root, 123456, user:update]
+[DEBUG][22-11-11][druid.sql.ResultSet]{conn-10005, pstmt-20005, rs-50005} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} clearParameters. 
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, stmt-20005} clearBatch. 
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} pool-recycle
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10001} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10002} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10003} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10004} closed
+[DEBUG][22-11-11][druid.sql.Statement]{conn-10005, pstmt-20005} closed
+[DEBUG][22-11-11][druid.sql.Connection]{conn-10005} closed

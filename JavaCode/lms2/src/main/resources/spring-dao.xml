@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--读取数据库连接配置-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--接管mybatis核心配置-->
+    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <!--接管建造者建造工厂-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!--这里两种方式，第一注册实现类，第二配置接口扫描，这里使用接口扫描-->
+    <!--方式一不需要在mybatis核心配置文件中注册，新建实现类继承和实现接口，在容器中托管bean即可-->
+    <!--方式二，需要在核心配置文件中注册xml文件-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入工厂，自动生成sqlSession-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--包扫描地址-->
+        <property name="basePackage" value="com.zhong.dao"/>
+    </bean>
+
+
+</beans>

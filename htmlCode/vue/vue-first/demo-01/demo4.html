@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js'></script>
+</head>
+<body>
+<div id="app">
+    <!--v-bind绑定数据到标签属性中-->
+    <!--v-on绑定函数到标签事件中-->
+    <button v-on:click="sayHello">点击弹出</button>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",/*绑定到具体哪一个id或者class上*/
+        data: {
+            msg: "hello"
+        },
+        /*所有vm模型中的可能被调用的方法都在这里定义*/
+        methods: {
+            /*方法还是以键值对的性质定义，冒号右侧类似一个匿名函数*/
+            sayHello: function () {
+                alert(this.msg);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.borrow.BorrowMapper">
+
+    <!--条件查询借阅记录-->
+    <select id="getBorrowList" parameterType="map" resultType="borrow">
+        select * from lms.borrow
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="bookId != null">
+                and book_id = #{bookId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="borrowDate != null">
+                and borrow_date = #{borrowDate}
+            </if>
+            <if test="revertDate != null">
+                and revert_date = #{revertDate}
+            </if>
+        </where>
+        <trim prefix="limit">
+            <if test="from != null and pageSize != null">
+                #{from},#{pageSize}
+            </if>
+        </trim>
+    </select>
+
+    <!--在借书籍-->
+    <select id="getBorrowCount" resultType="_int">
+        select count(1) from lms.borrow
+        where user_id = #{id} and revert_date is null;
+    </select>
+
+    <!--可借阅数量（10本）此处不实现，在业务层实现调用在借图书用10减去得结果-->
+
+    <!--增加借阅记录-->
+    <insert id="addBorrow" parameterType="borrow">
+        insert into lms.borrow(id,book_id,user_id,borrow_date,revert_date,create_by,creation_date)
+        values (#{id},#{bookId},#{userId},#{borrowDate},#{revertDate},#{createBy},#{creationDate});
+    </insert>
+
+    <!--通过id删除借阅记录-->
+    <delete id="deleteBorrowById">
+        delete from lms.borrow where id = #{id};
+    </delete>
+
+    <!--修改借阅记录-->
+    <update id="modify">
+        update lms.borrow
+        <set>
+            <if test="bookId != null">
+                book_id = #{bookId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="borrowDate != null">
+                borrow_date = #{borrowDate},
+            </if>
+            <if test="revertDate != null">
+                revert_date = #{revertDate},
+            </if>
+            <if test="modifyBy != null">
+                modify_by = #{modifyBy},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
+

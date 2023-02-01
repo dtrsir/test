@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&&characterEncoding=utf-8&&useSSL=false
+    username: root
+    password: 123456
+
+    #durid\u6570\u636E\u6E90\u4E13\u6709\u914D\u7F6E
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #\u914D\u7F6E\u76D1\u63A7\u7EDF\u8BA1\u7684\u62E6\u622A\u7684filter\uFF0Cstat\uFF1A\u76D1\u63A7\u7EDF\u8BA1\u3001log4j\uFF1A\u65E5\u5FD7\u8BB0\u5F55\u3001wall\uFF1A\u9632\u5FA1sql\u6CE8\u5165
+    #\u5982\u679C\u8FD0\u884C\u65F6\u62A5\u9519 \u7C7B\u627E\u4E0D\u5230\u5F02\u5E38\uFF1Alog4j
+    #\u5C31\u5BFC\u5165log4j\u4F9D\u8D56
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    userGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#mybatis\u914D\u7F6E
+mybatis:
+  type-aliases-package: com.zhong.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
